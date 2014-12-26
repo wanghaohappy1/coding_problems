@@ -22,3 +22,13 @@ CC150 chap3: Stacks and Queues
 * use array of stacks with certain threshold
 * popAt(): afer poping from intermediate stack, transfer elements
            from other stacks to fill in the blank
+
+## Hanoi Tower
+* Recursive approach: initial tower, buffer, destination
+* move n-1 elements from initial tower to buffer using destination as a buffer
+* move bottom element to destination directly
+* move n-1 elements from buffer to desination using initial tower as a buffer
+
+## Implement three stacks using a single array
+* fixed division
+* flexible division
