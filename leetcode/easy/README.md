@@ -33,3 +33,26 @@ LeetCode-Easy
 * use hashmap to store value pairs
 * need to consider subtractive notation
 
+## Longest Common Prefix
+* scan each character for each string
+
+## Valid Palindrome
+* use stringbuffer to build a new string with only alphanumeric characters
+
+## Pascal's Triangle
+* currlist(i) = prevlist(i-1) + prevlist(i)
+
+## Pascal's Triangle 2
+* using same pattern as above
+* optimized: C(n,k+1) = C(n,k)*(n-k)/(k+1)
+
+## Remove Nth Node from End of List
+* two pointers
+
+## Valid Parentheses
+* use stack to store left parentheses
+* traverse the string to match right with item in the stack
+
+## Path Sum
+* recursively check on left/right subtree with reduced sum
+* base case needs to make sure reached destination is a leaf
