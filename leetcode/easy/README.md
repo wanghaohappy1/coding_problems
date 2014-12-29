@@ -56,3 +56,28 @@ LeetCode-Easy
 ## Path Sum
 * recursively check on left/right subtree with reduced sum
 * base case needs to make sure reached destination is a leaf
+
+## Majority Element
+* use hashmap
+
+## Max Depth Binary Tree
+* use recursion
+
+## Min Depth Binary Tree
+* if either child is null but not both, use helper function to return MAX_VALUE to ignore the child
+
+## Same Tree
+* use recursion
+
+## Excel Sheet Column Number
+* base-26 calculation
+
+## Level Order Traversal Binary Tree
+* use a queue to store nodes at each level
+* for each level, enqueueu all nodes at next level, then nodes at current level to result
+
+## Level Order Traversal Binary Tree 2
+* similar to previous questions, just add level data to the head of result list
+
+## Symmetric Tree
+* use a helper function to recursively check if two subtrees are symmetric
