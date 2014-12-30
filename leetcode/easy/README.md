@@ -72,6 +72,9 @@ LeetCode-Easy
 ## Excel Sheet Column Number
 * base-26 calculation
 
+## Excel Sheet Column Titile
+* convert decimal to base 26
+
 ## Level Order Traversal Binary Tree
 * use a queue to store nodes at each level
 * for each level, enqueueu all nodes at next level, then nodes at current level to result
@@ -89,6 +92,10 @@ LeetCode-Easy
 ## Merge Sorted Array
 * two pointers
 * keep adding larger element of the two arrays from backwards
+
+## Merge Sorted List
+* two pointers
+* insert nodes of one list into another list
 
 ## Remove Duplicates Sorted List
 * two pointers
@@ -109,3 +116,21 @@ LeetCode-Easy
 ## Plus One
 * add 1 to the end, if carryon=1, continue to add 1 to previous elements
 * create a new array if no more space
+
+## Length Of Last Word
+* split by whitespace str.split("\\s+")
+
+## AddBinary
+* modulo operation
+* stringbuffer insert(index,str)
+
+## Valid Sudoku
+* matrix traversal
+* check by row,column,submatrix
+
+## Cound And Say
+* when see a different number, append result to StringBuffer
+
+## Implement strStr()
+* two pointer
+* if a character matches first char of needle, keep comparing
