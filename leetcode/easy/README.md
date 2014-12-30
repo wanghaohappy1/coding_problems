@@ -81,3 +81,31 @@ LeetCode-Easy
 
 ## Symmetric Tree
 * use a helper function to recursively check if two subtrees are symmetric
+
+## Remove Element
+* squeeze the array by moving front forward and tail backward
+* if elem found, replace it with tail element and check again
+
+## Merge Sorted Array
+* two pointers
+* keep adding larger element of the two arrays from backwards
+
+## Remove Duplicates Sorted List
+* two pointers
+* one to go through each different element, another one to pass through duplicates
+
+## Remove Duplicates Sorted Array
+* two pointers: num and nextNum
+* set the number after num to be nextNum
+
+## Climbing Stairs
+* arr[i] = number of ways to climb n steps
+* arr[i] = arr[i-1] + arr[i-2]
+
+## Factorial Trailing Zeroes
+* one pair of 2 and 5 makes a trailing zero
+* count number of factor 2 and 5 from 1 to n
+
+## Plus One
+* add 1 to the end, if carryon=1, continue to add 1 to previous elements
+* create a new array if no more space
