@@ -1,7 +1,8 @@
 /**
  * Problem: Determine if a string is a palindrome considering only alphanumeric chars and ignore cases
  *
- * Solution: use stringbuffer to build a new string with only alphanumeric characters
+ * Solution 1: use stringbuffer to build a new string with only alphanumeric characters
+ * Solution 2: directly use two pointers to compare and skip non-alphanumeric characters
  */
 
 public class ValidPalindrome{
@@ -35,4 +36,26 @@ public class ValidPalindrome{
 		}
 		return true;
 	}
+
+	public boolean isPalindrome2(String s){
+		int i=0; 
+		int j=s.length()-1;
+		while(i < j){
+			//skip non-alphanumeric characters
+			while(i<j && !Character.isLetterOrDigit(s.charAt(i))){
+				i++;
+			}
+			while(i<j && !Character.isLetterOrDigit(s.charAt(j))){
+				j--;
+			}
+			if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))){
+				return false;
+			}
+			i++;
+			j--;
+		}
+		return true;
+	}
+
+
 }

@@ -9,8 +9,9 @@ public class ReverseInteger{
 		int temp = x<0 ? -x : x;
 		int result = 0;
 		while(temp != 0){
-			if(result > (Integer.MAX_VALUE-temp%10)/10){
-				return 0;
+			//take care of overflow and underflow
+			if(Math.abs(result) > Integer.MAX_VALUE/10){
+			    return 0;
 			}else{
 				result = result*10 + temp%10;
 			}

@@ -1,136 +1,202 @@
 LeetCode-Easy
 ========
 
-## Balanced Binary Tree
-* recursively check on subtrees
+Contents:
 
-## Compare two version numbers
-* split on dots
-* note that two version may have different number of subversions
+- [Lists](#Lists)
 
-## Intersection of two linked lists
-* count number of nodes, then start traversing with same number of nodes left
-* if conditions allow: alternatively, use nested loops or mark nodes visited
+- [Arrays](#Arrays)
 
-## Min Stack
-* use additional stack to track min element
+- [Strings](#Strings)
 
-## Reverse Integer
-* modulo operation
-* need to check overflow case
+- [Trees](#Trees)
 
-## String to Integer
-* pre-process to omit leading and trailing whitespace
-* traverse the string to update integer value
-* keep checking invalid character and overflow case
+- [Math and Integers](#Math and Integers)
 
-## Palindrome Number
-* reverse and then compare (might overflow)
-* use arithmetics and compare lowest/highest digit at same time
+- [Stack](#Stack)
 
-## Roman to Integer
-* simply follow roman numeral definition
-* use hashmap to store value pairs
-* need to consider subtractive notation
+- [Dynamic Programming](#Dynamic Programming)
 
-## Longest Common Prefix
-* scan each character for each string
+<a name="Lists"/>
 
-## Valid Palindrome
-* use stringbuffer to build a new string with only alphanumeric characters
+### Lists
 
-## Pascal's Triangle
-* currlist(i) = prevlist(i-1) + prevlist(i)
+* Intersection of two LinkedLists
 
-## Pascal's Triangle 2
-* using same pattern as above
-* optimized: C(n,k+1) = C(n,k)*(n-k)/(k+1)
+If the problem allows us to mark the nodes visited, then we can simply mark the nodes as we traverse the list. Once a list sees a visited node, then it is the intersection. However, if this is not allowed, we can first count the number of nodes in each list(len1 and len2), and then compute the difference(diff=len1-len2). Then we move the head of the longer list diff steps ahead so that now two lists have same length left. Then we start to traverse the two lists at the same speed. Once they reach at the same node, then it is the intersection.
 
-## Remove Nth Node from End of List
-* two pointers
+* Remove Nth Node from the End of List
 
-## Valid Parentheses
-* use stack to store left parentheses
-* traverse the string to match right with item in the stack
+Use two pointers with one is always n steps ahead of another. Move two pointers at the same speed until find the nth last node.
 
-## Path Sum
-* recursively check on left/right subtree with reduced sum
-* base case needs to make sure reached destination is a leaf
+* Merge Sorted List
 
-## Majority Element
-* use hashmap
+Use two pointers, one on each list.
 
-## Max Depth Binary Tree
-* use recursion
+* Remove Duplicates Sorted List
 
-## Min Depth Binary Tree
-* if either child is null but not both, use helper function to return MAX_VALUE to ignore the child
+Use two pointers, one points to the node before duplicate, another to find next different element.
 
-## Same Tree
-* use recursion
 
-## Excel Sheet Column Number
-* base-26 calculation
+<a name="Arrays"/>
 
-## Excel Sheet Column Titile
-* convert decimal to base 26
+### Arrays
 
-## Level Order Traversal Binary Tree
-* use a queue to store nodes at each level
-* for each level, enqueueu all nodes at next level, then nodes at current level to result
+* Majority Element:
 
-## Level Order Traversal Binary Tree 2
-* similar to previous questions, just add level data to the head of result list
+One approach is to use two loops to find maxCount and corresponding element(or use hashmap to store frequency for each element).
+Another approach is to use Moore's Voting algorithm, which operates in O(n) time. 
 
-## Symmetric Tree
-* use a helper function to recursively check if two subtrees are symmetric
+* Remove Element:
 
-## Remove Element
-* squeeze the array by moving front forward and tail backward
-* if elem found, replace it with tail element and check again
+Use two pointers(front and tail). If element found, replace it with tail element and move tail pointer backward. Otherwise, move front pointer forward.
 
-## Merge Sorted Array
-* two pointers
-* keep adding larger element of the two arrays from backwards
+* Merge Sorted Array
 
-## Merge Sorted List
-* two pointers
-* insert nodes of one list into another list
+Use two pointers, one on each array, and add larger element to the end of longer array.
 
-## Remove Duplicates Sorted List
-* two pointers
-* one to go through each different element, another one to pass through duplicates
+* Valid Sudoku
 
-## Remove Duplicates Sorted Array
-* two pointers: num and nextNum
-* set the number after num to be nextNum
+Simple matrix traversal and check each rule
 
-## Climbing Stairs
-* arr[i] = number of ways to climb n steps
-* arr[i] = arr[i-1] + arr[i-2]
 
-## Factorial Trailing Zeroes
-* one pair of 2 and 5 makes a trailing zero
-* count number of factor 2 and 5 from 1 to n
+<a name="Strings"/>
 
-## Plus One
-* add 1 to the end, if carryon=1, continue to add 1 to previous elements
-* create a new array if no more space
+### Strings
 
-## Length Of Last Word
-* split by whitespace str.split("\\s+")
+* Compare two version numbers:
 
-## AddBinary
-* modulo operation
-* stringbuffer insert(index,str)
+First, we can use str.split("\\.") to split on dots and then compare the versions. Note that two version can have different length.
 
-## Valid Sudoku
-* matrix traversal
-* check by row,column,submatrix
+* String to Integer:
 
-## Cound And Say
-* when see a different number, append result to StringBuffer
+First, we need skip some leading whitespace if necessary(Character.isWhitespace(str.charAt(i))). Then determine the sign. To compute integer value, find last digit and append it to the result. At every step, we need to check if current result overflows. To be more specific, before evaluating num = num*10 + lastDigit, we need to check if num>Integer.MAX_VALUE/10 or num==Integer.MAX_VALUE && lastDigit>=8. If so, overflow/underflow occurs.
 
-## Implement strStr()
-* two pointer
-* if a character matches first char of needle, keep comparing
+* Longest Common Prefix:
+
+Simply scan each character of each string at the same time. 
+
+* Valid Palindrome
+
+One approach is to use StringBuffer to build a string without non-alphanumeric values and use two pointers to compare. Another approach to directly use two pointers to compare and skip any non-alphanumeric values. 
+
+* Length of Last Word
+
+Split by whitespace using str.split("\\s+") 
+
+* Count and Say
+
+Append result to StringBuffer when reach a different element
+
+* Implement strStr()
+
+Use two pointers, one for each string. Use two loops to compare characters.
+
+* ZigZag Conversion
+
+For the first and last row, step size is 2(nRows-1); For ith middle row, step size is adjusted by 2i
+
+
+<a name="Trees"/>
+
+### Trees
+
+* Balanced Binary Tree: 
+
+One approach is to compute dpeth and recursively call the method on subtrees, and this will take O(n) space and O(n^2) time. But this is not very efficient because we have repeatedly compute depth for some nodes. To make it more efficient, instead of returning a boolean, we can use a helper function return an integer(-1 for not balance and non-zero value for depth). Now this will take O(n) time.
+
+* Path Sum:
+
+This problem only deals with root-to-leaf path. So we can recursively call on left/right subtrees with reduced sum. Note that the base case is to check if current node is a leaf and if sum becomes zero.
+
+* Max Depth Binary Tree:
+
+Simply use rcursion
+
+* Min Depth Binary Tree:
+
+Two ways to consider this problem: DFS and BFS. To do DFS, we use recursion. If a node is a leaf, min depth is 1. If a node has an empty subtree and a non-empty subtree, compute depth of the non-empty subtree. To ignore computing the depth of empty subtree, one approach is to use control flow(if-statement) and another way is to return Integer.MAX_VALUE and be ignored when performing Math.min() function. To do BFS, return depth once we reach a leaf. BFS works well when tree is highly unbalanced because we don't need to traverse to the end.
+
+* Same Tree:
+
+Simply use recursion
+
+* Binary Tree Level Order Traversal:
+
+Use a queue to store nodes at a level, while polling nodes from current level, enqueue children on the next level
+
+* Binary Tree Level Order Traversal 2:
+
+Simliar to solution above, just reverse the order when appending to the final result
+
+* Symmetric Tree:
+
+Create a helper function to check if two trees(t1 and t2) are symmetric(t1.lefttree=t2.righttree and t1.righttree==t2.lefttree)
+
+
+<a name="Math and Integers"/>
+
+### Math and Integers
+
+* Reverse Integer:
+
+To do this, we simply use the modulo and division to find the last digit and append it to the result. But we also need to take care of the case when overflow/underflow occurs. 
+
+* Palindrome Number:
+
+There are several general approach to consider: (a)convert to string and then manipulate (b) reverse the integer and then compare; to combat the overflow/underflow, consider store value into a type larger than int. However, the best approach is to compare two ends at the same time and then chopping them off from the integer. First, we compute the order of the highest digit using a while loop. To chop off the highest and lowest digit, do num=(num%order)/10 and order/=100.
+
+* Roman to Integer:
+
+Simply follow the definition but need to take care of subtractive notation.
+
+* Pascal's Triangle:
+
+Use the patter: currentList(i) = prevList(i-1) + prevList(i) except currList(1)=currList(end)=1
+
+* Pascal's Triangle 2:
+
+One approach is to use the same patter as above and return just the specified row. Another optimized solution is to use C(n,k+1) = C(n,k)*(n-k)/(k+1).
+
+* Excel Sheet Column Number
+
+Equivalent to base-26 calculation(A-1, B-2, ...)
+
+* Excel Sheet Column Title
+
+Convert decimal to base-26 and assign corresponding letter
+
+* Factorial Trailing Zeros
+
+Note that one pair of 2 and 5 makes a trailing zero, so just count number of factor 2 and 5 in numbers from 1 to n.
+
+* Plus One
+
+Add one to the lowest digit, if carry on, add 1 to higher digit. If all digits are 9, add a digit 1 at the front.
+
+* Add Binary
+
+Simply follow binary operation, use StringBuffer
+
+
+<a name="Stack"/>
+
+### Stack
+
+* Min Stack:
+
+We can use two stacks: one(s1) to store data, another(s2) to track min element. Whenever we push an element to stack, check the top element of s2. If it is larger than or equal to the pushed element, then we have a new min element, so also push it to s2. Whenever pop from s1, we also need to check with s2 to see if the element popped is the min element. If so, pop it from s2.
+
+* Valid Parentheses:
+
+While traversing the string, if see a left parentheses, push it to stack; if see a right parentheses, compare it to the top element from stack to check if matched. 
+
+
+<a name="Dynamic Programming"/>
+
+### Dynamic Programming
+
+* Climb Stairs
+
+Suppose arr[i] = number of ways to climb n steps in either one or two steps, then arr[i] = arr[i-1] + arr[i-2]
+

@@ -1,8 +1,9 @@
 /**
  * Problem: Implement atoi to convert a string to an integer
  *
- * Solution: pre-process to ignore whitespace, traverse the string to update integer value
+ * Solution 1: pre-process to ignore whitespace, traverse the string to update integer value
  *           while checking invalid character and overflow
+ * Solution 2: similar to solution 1, but use some method in Character
  */
 
 public class StringToInteger{
@@ -54,4 +55,39 @@ public class StringToInteger{
 		}
 		return (int)result*sign;
 	}
+    
+
+	public int atoi2(String str){
+		int i=0; 
+		int len = str.length();
+		//skip leading whitespace
+		while(i<len && Character.isWhitespace(str.charAt(i))){
+			i++;
+		}
+		//determine the sign
+		int sign = 1;
+		if(i<len && str.charAt(i)=="+"){
+			i++;
+		}else if(i<len && str.charAt(i)=='-'){
+			sign = -1;
+			i++;
+		}
+		//compute integer value
+		int num = 0;
+		while(i<len && Character.isDigit(str.charAt(i))){
+			int digit = Character.getNumericValue(str.charAt(i));
+			//check overflow
+			if(num>Integer.MAX_VALUE/10 || num==Integer.MAX_VALUE/10&&digit>=8){
+				return sign==1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+			}
+			num = num*10 + digit;
+			i++;
+		}
+		return sign*num;
+	}
+
+
+
+
+
 }

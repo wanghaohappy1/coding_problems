@@ -1,10 +1,11 @@
 /**
  * Problem: Given a binary tree, determine if it is height-balanced.
  *
- * Solution: recursively check on subtrees
+ * Solution 1: compute height and recursively check on subtrees, time O(n^2)
+ * Solution 2: 
  */
 public class BalancedBinaryTree{
-	public boolean isBalanced(TreeNode root){
+	public boolean isBalanced1(TreeNode root){
 		if(root == null){
 			return true;
 		}
@@ -20,5 +21,29 @@ public class BalancedBinaryTree{
 			return -1;
 		}
 		return 1 + Math.max(height(node.left),height(node.right));
+	}
+
+	public boolean isBalanced2(TreeNode root){
+		return isBalanceHelper(root)!=1;
+	}
+
+	public int isBalanceHelper(TreeNode root){
+		if(root == null){
+			return 0;
+		}
+		//compute depth of subtrees and check if -1 is returned
+		int leftDepth = isBalanceHelper(root.left);
+		if(leftDepth == -1){
+			return -1;
+		}
+		int rightDepth = isBalanceHelper(root.right);
+		if(rightDepth == -1){
+			return -1;
+		}
+		if(Math.abs(leftDepth-rightDepth)>1){
+			return -1;
+		}else{
+			return 1+Math.max(leftDepth,rightDepth);
+		}
 	}
 }
