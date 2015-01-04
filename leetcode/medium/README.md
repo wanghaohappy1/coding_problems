@@ -47,6 +47,10 @@ Fast/slow runner techinuqe
 
 Use two lists to store two partitions, traverse the original list and add nodes to correct list
 
+* Add Two Numbers:
+
+Use two pointers
+
 
 <a name="Arrays"/>
 
@@ -80,6 +84,10 @@ Use two pointers for left and right side of the container. Note that volume of t
 
 Use two pointers, one for inserting index, another to find next different element
 
+* Two Sum:
+
+Use two pointers and no additional space; Another approacth is to use hashmap to store visited value and corresponding index and check if needed counterpart is in the map
+
 
 <a name="Strings"/>
 
@@ -89,7 +97,9 @@ Use two pointers, one for inserting index, another to find next different elemen
 
 Use str.split("\\s+") to split on whitespaces
 
+* Anagrams:
 
+Sort strings first and use hashmap to store sorted string and its anagrams
 
 <a name="Trees"/>
 
@@ -183,6 +193,14 @@ One simple approach is to do a counting sort, and rewrite the array by number of
 
 First do binary search on rows and do binary search on selected rows.
 
+* Pow(x,n):
+
+Do a binary search on power n
+
+* Sqrt(x):
+
+Try numbers from 0-x using binary search
+
 <a name="Backtracking"/>
 
 ### Backtracking
@@ -194,3 +212,7 @@ Add a origin not in the list, use recursion to generate all possible permutation
 * Combinations:
 
 Similar idea to permutation, but only limit list size to k.
+
+* Letter Combinations of a Phone Number:
+
+Add origin, generate combinations, then remove origin to prepare for next element
