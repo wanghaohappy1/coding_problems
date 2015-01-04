@@ -21,11 +21,12 @@ public class RotateMatrix{
 		while(side > 0){
 			//edge of the layer
 			int margin = n - 1 - layer;
+
 			for(int i=0; i<side; i++){
 				//temp = top
-				int temp = matrix[layer][i];
+				int temp = matrix[layer][layer+i];
 				//top = left
-				matrix[layer][i] = matrix[margin - i][layer];
+				matrix[layer][layer+i] = matrix[margin - i][layer];
 				//left = bottom
 				matrix[margin - i][layer] = matrix[margin][margin - i];
 				//bottom = right

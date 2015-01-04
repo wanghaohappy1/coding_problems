@@ -24,6 +24,8 @@ Contents:
 
 - [Sorting and Searching](#Sorting and Searching)
 
+- [Backtracking](#Backtracking)
+
 
 <a name="Lists"/>
 
@@ -36,6 +38,14 @@ Use fast/slow runner technique. Fast and slow runner will eventually meet if a c
 * Swap Node Pair:
 
 Use two pointers to adjacent nodes and link two nodes to previous swapped list
+
+* Linked List Cycle 2:
+
+Fast/slow runner techinuqe
+
+* Partition List:
+
+Use two lists to store two partitions, traverse the original list and add nodes to correct list
 
 
 <a name="Arrays"/>
@@ -58,9 +68,26 @@ The first element such that arr[i-1]>arr[i] is the min element.
 
 Use first row and column to mark rows and columns to be set to 0, but need to check if need to zero out first row and column first
 
+* Rotate Matrix:
+
+Rotate layer by layer.
+
+* Cotainer with Most Water:
+
+Use two pointers for left and right side of the container. Note that volume of the container always depends on the shortest side.
+
+* Remove Duplicate from Sorted Array 2:
+
+Use two pointers, one for inserting index, another to find next different element
+
+
 <a name="Strings"/>
 
 ### Strings
+
+* Reverse Words in a String:
+
+Use str.split("\\s+") to split on whitespaces
 
 
 
@@ -87,6 +114,14 @@ Build root using middle element, and build left/right child using recursion on l
 * Sum Root to Leaf Numbers:
 
 Use DFS to sum from bottom up.
+
+* BST Iterator:
+
+Use a stack to store trace while branching to left. Switch iterator to right child after calling next() to prepare for next round.
+
+* Path Sum 2:
+
+Use a list to try all paths, remove the node from list to try next node
 
 
 <a name="Math and Integers"/>
@@ -148,4 +183,14 @@ One simple approach is to do a counting sort, and rewrite the array by number of
 
 First do binary search on rows and do binary search on selected rows.
 
+<a name="Backtracking"/>
 
+### Backtracking
+
+* Permutation:
+
+Add a origin not in the list, use recursion to generate all possible permutations starting at origin, then remove origin to try next element as origin. Once list size is equal to array length, we know we get a permutation.
+
+* Combinations:
+
+Similar idea to permutation, but only limit list size to k.
