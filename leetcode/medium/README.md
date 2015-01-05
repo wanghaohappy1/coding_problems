@@ -88,6 +88,19 @@ Use two pointers, one for inserting index, another to find next different elemen
 
 Use two pointers and no additional space; Another approacth is to use hashmap to store visited value and corresponding index and check if needed counterpart is in the map
 
+* 3 Sum:
+
+Sort the array first, try elements in the sorted array as a, then use two pointers on the remaining right subarray to find b,c such that b+c=-a (sorting because we can consider a:small,b:mid,c:large).
+Skip duplicates while moving pointers.
+
+* 3 Sum Closest:
+
+Similar to threeSum, just need to update final result white traversing
+
+* 4 Sum:
+
+Similar to 3Sum, just add another loop between outside for loop and inside while loop. Another approach: for every pair of two numbers in the array, store the sums and the index pairs in a hashmap, then perform lookup in hashmap to find two pairs that sum to the target
+
 
 <a name="Strings"/>
 
@@ -100,6 +113,14 @@ Use str.split("\\s+") to split on whitespaces
 * Anagrams:
 
 Sort strings first and use hashmap to store sorted string and its anagrams
+
+* Longest Substring Without Repeating Character:
+
+Use two pointers to bound the substring and use boolean array to mark characters used in the substring
+
+* Longest Palindromic Substring:
+
+Try each possible centers and keep expanding and check if palindrome exists around the center
 
 <a name="Trees"/>
 
