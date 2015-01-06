@@ -3,17 +3,16 @@
  *
  * Solution:
  */
+
 import java.util.*;
 public class Test{
 	public static void main(String[] args){
-		FourSum test = new FourSum();
-		int[] num = new int[]{1,0,-1,0,-2,2};
-		for(ArrayList<Integer> l: test.fourSum2(num,0)){
-			for(Integer n: l){
-				System.out.print(n+" ");
-			}
-			System.out.println();
-		}
+		// SimplifyPath test = new SimplifyPath();
+		// System.out.println(test.simplifyPath("/home//foo/"));
+		String s = "/home";
+		String[] split = s.split("\\/+");
+		System.out.println(split.length);
+
 
 	}
 }

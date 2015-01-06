@@ -1,6 +1,6 @@
 
 
-Summary of some [LeetCode](https://oj.leetcode.com/problems/) problems marked as easy in difficulty.
+Summary of some [LeetCode](https://oj.leetcode.com/problems/) problems marked as medium in difficulty.
 
 Solutions are on my [Github](https://github.com/startupjing/coding_problems)
 
@@ -26,6 +26,7 @@ Contents:
 
 - [Backtracking](#Backtracking)
 
+- [BFS and DFS](#BFS and DFS)
 
 <a name="Lists"/>
 
@@ -167,11 +168,14 @@ Sum up bit at each position and modulo 3 to get single number
 
 First build mapping between integer values and Roman numerals including subtractive notations. Then use modulo operation to convert bases to Roman numerals
 
+
 <a name="Stack"/>
 
 ### Stack
 
+* Simplify Path:
 
+Use a stack to push directories, if see ../, then pop from stack to go back. Need to split by / first, use str.split("\\/+") to group multiple / as one.
 
 <a name="Dynamic Programming"/>
 
@@ -222,6 +226,10 @@ Do a binary search on power n
 
 Try numbers from 0-x using binary search
 
+* Divide Two Integers:
+
+ Use left-shift to double the divisor every time(, and if divisor exceeds dividend, subtract previous shifted value from divident, reset counter, and continue shifting.
+
 <a name="Backtracking"/>
 
 ### Backtracking
@@ -234,6 +242,18 @@ Add a origin not in the list, use recursion to generate all possible permutation
 
 Similar idea to permutation, but only limit list size to k.
 
+* Generate Parenthesis:
+
+DFS--invariant is #left<#right, and if #left=n, can only add right parentheses. For normal cases, continue to add left parentheses and then add right parentheses
+
 * Letter Combinations of a Phone Number:
 
 Add origin, generate combinations, then remove origin to prepare for next element
+
+<a name="BFS and DFS"/>
+
+### BFS and DFS
+
+* Word Ladder:
+
+BFS--for words in each level, try each possible letter a-z on each position of the word; Use queue to store words in a level and use a hashset to mark visited words.
