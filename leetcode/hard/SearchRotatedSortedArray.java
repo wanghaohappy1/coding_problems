@@ -18,7 +18,7 @@ public class SearchRotatedSortedArray{
 			if(A[mid]==target){
 				return mid;
 			}
-			//left half array is sorted
+			//left half array is an increasing sequence
 			if(A[low] <= A[mid]){
 				//target in the sorted array
 				if(A[low]<=target && target<A[mid]){

@@ -29,6 +29,14 @@ Contents:
 - [BFS and DFS](#BFS and DFS)
 
 
+<a name="Arrays"/>
+
+### Arrays
+
+* Trapping Rain Water:
+
+Set bar separately from left and right. Then for each position i, the volume of water stored at the position is min(left,right)-arr[i]
+
 
 <a name="Trees"/>
 
@@ -47,3 +55,4 @@ Use stack to store parent nodes and mark last visiited node. When parent node is
 * Search Rotated Sorted Array:
 
 Compare middle element and left/right boundary element to knwo if the subarray is sorted, then check if element is in the sorted array, otherwise change to search in the other array
+

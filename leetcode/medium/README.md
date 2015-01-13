@@ -177,6 +177,14 @@ First build mapping between integer values and Roman numerals including subtract
 
 Use a stack to push directories, if see ../, then pop from stack to go back. Need to split by / first, use str.split("\\/+") to group multiple / as one.
 
+* Reverse Polish Notation:
+
+Use a stack to store numbers, if see an operator, pop two numbers from stack, perform the operation and push result onto stack
+
+* BinaryTreeLevelorderZigzag:
+
+Use two stacks, one to store node in current level and another one to store nodes in next level. Use a boolean to flag if we will visit from right next time, if so push left child first and then right child. Alternate order after visiting each level.
+
 <a name="Dynamic Programming"/>
 
 ### Dynamic Programming
@@ -229,6 +237,14 @@ Try numbers from 0-x using binary search
 * Divide Two Integers:
 
  Use left-shift to double the divisor every time(, and if divisor exceeds dividend, subtract previous shifted value from divident, reset counter, and continue shifting.
+
+* Search Rotated Sorted Array 2 (with duplicates):
+
+In previous problem, we use A[low] <= A[mid] to confirm that A[low]~A[mid] is an increasing sequence under the condition that no duplicates exist. But now we can get the same conclusion if duplicate occurs.To improve the previous approach, just test A[low] < A[mid] to ensure increasing sequence and move low forward if A[low]=A[mid]. Alternatively, we can just do a linear scan to search for target.
+
+* Sort List:
+
+Use merge sort--sort left and right half list and then merge two sorted lists using two pointers. Note that merge sort approach uses recursion, which results in O(lgn) stack space.
 
 <a name="Backtracking"/>
 
