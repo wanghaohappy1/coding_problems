@@ -9,17 +9,15 @@ import java.util.*;
 public class kLargestElements{
 	public static void main(String[] args){
 		int[] test = new int[]{7,5,2,4,3,9};
-		int[] res = findKLargest2(test,3);
-		for(int n: res){
-			System.out.println(n + " ");
-		}
+		int res = findKLargest3(test,3);
+		System.out.println(res);
 	}
 
     //use outer loop of bubble sort for k times
     //time O(nk)
-	public static int[] findKLargest(int[] array, int k){
+	public static int findKLargest(int[] array, int k){
 		if(array == null){
-			return null;
+			return Integer.MAX_VALUE;
 		}
 		//can throw exception when length is small
 		
@@ -39,14 +37,14 @@ public class kLargestElements{
 			res[idx] = array[i];
 			idx ++;
 		}
-		return res;
+		return res[res.length-1];
 	}
     
     //use priority queue
     //time O(n+klogn)
-	public static int[] findKLargest2(int[] array, int k){
+	public static int findKLargest2(int[] array, int k){
 		if(array == null){
-			return null;
+			return Integer.MAX_VALUE;
 		}
 		int len = array.length;
 		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(len, new Comparator<Integer>(){
@@ -61,10 +59,58 @@ public class kLargestElements{
 		for(int i=0; i<k; i++){
 			res[i] = pq.poll();
 		}
-		return res;
+		return res[k-1];
 
 	}
 
+	//quicksort
+	//worst O(n^2) averageO(n)
+	public static int findKLargest3(int[] array, int k){
+		return helper(array, 0, array.length-1, array.length-k+1);
+	}
+
+	public static int helper(int[] arr, int left, int right, int k){
+		if(k>0 && k<=right-left+1){
+			int pos = partition(arr, left, right);
+
+			if(pos-left == k-1){
+				return arr[pos];
+			}
+			if(pos-left > k-1){
+				return helper(arr, left, pos-1, k);
+			}
+			return helper(arr, pos+1, right, k-pos+left-1);
+			
+		}
+		return Integer.MAX_VALUE;
+	}
+
+	public static int partition(int[] array, int left, int right){
+		int x = array[right];
+		int i = left;
+		for(int j=left; j<=right-1; j++){
+			if(array[j] <= x){
+				swap(array,i, j);
+				i++;
+			}
+		}
+		swap(array,i,right);
+		return i;
+	}
+
+	public static void swap(int[] array, int i, int j){
+		int temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+
+	public static int randomPartition(int[] arr, int left, int right){
+		int n = right-left+1;
+		int pivot = rand()%n;
+		swap(arr, left+pivot, right);
+		return partition(arr,left,right);
+	}
+ 
 
 
 

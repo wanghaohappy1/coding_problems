@@ -37,4 +37,31 @@ regular expression for phone numbers(\d{3}\-\d{3}\-\d{4})
 
 19. priority queue
 
+20. hashmap insert,get
+
+21. difference between map and list
+     when to use list or map
+
+22. process vs. thread
+
+23. lock, dead lock
+
+24. what will happen if there are too many locks in program
+
+25. design patter (singleton, factory)
+
+26. object vs. class
+
+27. polymorphism, encapsulation
+
+28. vector vs. map  and time complexity
+
+29. implement map insert(), find()
+
+30. many elements have same hashcode in hashmap: linear chaining, probing
+
+31. priority queue: how to implement, insert, get time, O(k) space:how to add elements
+
+32. hashtable: time complexity, how to store in memory
+
 
