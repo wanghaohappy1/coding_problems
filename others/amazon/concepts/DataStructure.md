@@ -234,6 +234,58 @@
 
 
 
-  
+# Priority Queue(Heap)
+
+- structure property
+  + a heap is a binary tree that is completely filled(exception at the bottom level), the average height of complete binary tree is O(logN)
+  + for any element in array position i
+    - left child: 2i
+    - right child: 2i+1
+    - parent: floor(i/2)
+  + heap consists of Comparable objects
+- heap order property
+  + smallest(largest) element at the root
+  + min-heap: for every node X, key in the parent of X is <= key in X
+  + order property ensures findMin() in O(1) time
+- operations
+  + insert()
+    - create a hole in next available position, if order property not violated, done; otherwise, heapify up
+    - time O(logN) if inserted element is new minimum(maximum)
+  + deleteMin()
+    - find minimum is easy
+    - removing minimum will create a hole in the root, we must move last element X in the heap to correct position
+    - put X in correct spot along a path from the root containing minimum children(heapify down)
+    - time: worst O(logN), average O(logN)
+  + decreaseKey()
+    - lowers the value of item at position p by positive amount
+    - if violate order property, heapify up
+    - application: make something with higher priority
+  + increaseKey()
+    - increase the value of item at position p by positive amount
+    - if violate order property, heapify down
+    - application: scheduler drops the priority of a process that is consuming excessive CPU time
+  + delete()
+    - remove node at position p
+    - first perform decreaseKey(p,infinity) then perform deleteMin()
+    - application: process terminated by user
+  + buildHeap()
+    - done with N successive inserts
+    - insert takes O(1) average, O(logN) worst
+    - build takes O(N) average, O(NlogN) worst
+- applications
+  + selection problem
+    - approach one(k smallest elements)
+      + read N elements into array and buildHeap
+      + perform k deleteMin()
+      + time: buildHeap O(N), deleteMin O(logN), total is O(N+klogN)
+    - approach two(k largest elements)
+      + idea: at any time, maintain a set of k largest elements
+      + read first k elements
+      + when a new element is read, compare it with kth largest element Sk(Sk is the smallest element in set S)
+        - if new element is larger, it replaces Sk
+        - otherwise, do nothing
+      + finally, return the smallest element in S
+      + time: build with first k elements O(k), time to process remaining (N-k)O(logk), total is O(k+(N-k)logk) = O(Nlogk)
+  + event simulation
 
 

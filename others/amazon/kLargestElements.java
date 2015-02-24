@@ -3,6 +3,7 @@
 //use bubble sort O(nk)
 //use sort O(nlogn)
 //use max heap(build O(n) and extra max k times O(klogn)) time O(n+klogn)
+//quick select
 
 
 import java.util.*;
@@ -110,7 +111,7 @@ public class kLargestElements{
 		swap(arr, left+pivot, right);
 		return partition(arr,left,right);
 	}
- 
+   
 
 
 
