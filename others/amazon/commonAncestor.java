@@ -1,3 +1,15 @@
+/**
+ * Problem: find the first common ancestor of two nodes in a binary tree
+ *          avoid store additional nodes in data stucture
+ * Solution 1: use links to parents
+ * Solution 2: if no link to parents, keep branching from the root until
+ *             two given nodes are on different subtree
+ * Solution 3: if no link to parents, define a function that 
+ *             a) return x(y) if subtree has x but not y(x)
+ *             b) return null if subtree doesn't have both x and y
+ *             c) otherwise, return common ancestor
+ */
+
 public class commonAncestor{
 	public static void main(String[] args){
 		TreeNode[] nodes = new TreeNode[8];
@@ -119,6 +131,25 @@ public class commonAncestor{
 			}
 		}
 	}
+
+
+	//time O(n), space O(1)
+	public static TreeNode lca(TreeNode root, TreeNode x, TreeNode y){
+		if(root == null){
+			return null;
+		}
+
+		if(root==x || root==y){
+			return root;
+		}
+
+		TreeNode left_lca = lca(root.left, x, y);
+		TreeNode right_cla = lca(root.right, x, y);
+		if(left_lca!=null && right_lca!=null){
+			return root;
+		}
+		return left_lca!=null ? left_lca : right_lca;
+    }
 
 
 
