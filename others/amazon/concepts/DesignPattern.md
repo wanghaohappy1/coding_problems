@@ -7,7 +7,7 @@ Contents:
 - [Singleton Pattern](#Singleton Pattern)
 - [MVC Pattern](#MVC Pattern)
 
-<a name="Types of Design Patterns"/>
+<a name="Types of Design Patterns" />
 
 ## Types of Design Patterns
 + Creational Patterns
@@ -19,27 +19,30 @@ Contents:
 + J2EE Patterns
 
 
-<a name="Factory Pattern"/>
+<a name="Factory Pattern" />
 
 ## Factory Pattern
 + create an interface
 
-``` public interface Shape{
+``` 
+public interface Shape{
 	 void draw();
-    }
+}
 ```
 
 + create concrete classes
 
-``` public class Rectangle implements Shape{
+``` 
+  public class Rectangle implements Shape{
 	   @Override
 	   public void draw(){
 	      System.out.println("Inside Rectangle");
        }
-    }
+   }
 ```
 
-``` public class Circle implements Shape{
+``` 
+    public class Circle implements Shape{
 	   @Override
 	   public void draw(){
 	      System.out.println("Inside Circle");
@@ -49,7 +52,8 @@ Contents:
 
 + create factory to generate concrete classes
 
-``` public class ShapeFactory{
+``` 
+    public class ShapeFactory{
 	   public Shape getShape(String type){
 	      if(type == null){
 	         return null;   
@@ -67,7 +71,8 @@ Contents:
 
 + demo
 
-``` public class Demo{
+``` 
+    public class Demo{
 	   ShapeFactory factory = new ShapeFactory();
 	   Shape circle = factory.getShape("Circle");
 	   circle.draw();
@@ -81,7 +86,8 @@ Contents:
 ## Singleton Pattern
 + create singleton class
 
-``` public class SingleObject{
+``` 
+    public class SingleObject{
 	   private static SingleObject ins = new SingleObject();
 
 	   private SingleObject(){}
@@ -98,7 +104,8 @@ Contents:
 
 + demo
 
-``` public class Demo{
+``` 
+    public class Demo{
 	   public static void main(String[] args){
 	       SingleObject obj = SingleObject.getInstance();
 	       obj.show();
@@ -106,7 +113,7 @@ Contents:
     }
 ```
 
-<a name="MVC Pattern"/>
+<a name="MVC Pattern" />
 
 ## MVC Pattern
 + Model-View-Controller
@@ -127,7 +134,8 @@ Contents:
 
 + Model
 
-``` public class Student{
+``` 
+   public class Student{
        private String id;
        private String name;
 
@@ -151,7 +159,8 @@ Contents:
 
 + View
 
-``` public class StudentView{
+``` 
+    public class StudentView{
 	   public void printInfo(String studentName, String studentId){
 	        System.out.println("Student: " + studentName);
 	        System.out.println("Student ID: " + studentId);
@@ -161,7 +170,8 @@ Contents:
 
 + Controller
 
-``` public class StudentController{
+``` 
+   public class StudentController{
 	   private Student model;
 	   private StudentView view;
 
@@ -194,7 +204,8 @@ Contents:
 
 + Demo
 
-``` public class Demo{
+``` 
+   public class Demo{
 	  public static void main(String[] args){
 	      Student model = getStudentFromDatabase();
 	      StudentView view = new StudentView();
