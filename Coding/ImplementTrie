@@ -1,0 +1,108 @@
+class TrieNode {
+    // Initialize your data structure here.
+    HashMap<Character, TrieNode> neighbors;
+    String word;
+    boolean isWord;
+    public TrieNode() {
+        neighbors = new HashMap<Character, TrieNode>();
+        word = "";
+        isWord = false;
+    }
+}
+public class Trie {
+    private TrieNode root;
+    HashMap<String, List<String>> words = new HashMap<String, List<String>>();
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    // Inserts a word into the trie.
+    public void insert(String word) {
+        if (word == null || word.length() == 0) {
+            return;
+        }
+        TrieNode cur = root;
+        for (int i = 0; i < word.length(); i++) {
+            if (!cur.neighbors.containsKey(word.charAt(i))) {
+                cur.neighbors.put(word.charAt(i), new TrieNode());
+            } 
+            cur = cur.neighbors.get(word.charAt(i));
+        }
+        cur.word = word;
+        cur.isWord = true;
+    }
+
+    // Returns if the word is in the trie.
+    public boolean search(String word) {
+        if (word == null || word.length() == 0) {
+            return false;
+        }
+        TrieNode cur = root;
+        for (int i = 0; i < word.length(); i++) {
+            if (!cur.neighbors.containsKey(word.charAt(i))) {
+                return false;
+            } else {
+                cur = cur.neighbors.get(word.charAt(i));
+            }
+        }
+        if (cur.isWord && cur.word.equals(word)) {
+            return true;
+        }
+        return false;
+    }
+    //get word with specific prefix
+    public List<String> getWords(String prefix) {
+        TrieNode cur = root;
+        List<String> res = new ArrayList<String>();
+        for (int i = 0; i < prefix.length(); i++) {
+            if (!cur.neighbors.containsKey(prefix.charAt(i))) {
+                return res;
+            } else {
+                cur = cur.neighbors.get(prefix.charAt(i));
+            }
+        }
+        Queue<TrieNode> q = new LinkedList<TrieNode>();
+        q.offer(cur);
+        while (!q.isEmpty()) {
+            TrieNode n = q.poll();
+            for (char c : n.neighbors.keySet()) {
+                TrieNode now = n.neighbors.get(c);
+                if (now.isWord) {
+                    res.add(now.word);
+                } else {
+                    q.offer(now);
+                }
+            }
+        }
+        return res;
+    }
+    //get words
+    public List<String> getAllWords(String prefix) {
+        if (words.containsKey(prefix)) {
+            return words.get(prefix);
+        } 
+        List<String> res = getWords(prefix);
+        words.put(prefix, res);
+        return res;
+    }
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
+    public boolean startsWith(String prefix) {
+        if (prefix == null || prefix.length() == 0) {
+            return false;
+        }
+        TrieNode cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            if (!cur.neighbors.containsKey(prefix.charAt(i))) {
+                return false;
+            } else {
+                cur = cur.neighbors.get(prefix.charAt(i));
+            }
+        }
+        return true;
+    }
+}
+// Your Trie object will be instantiated and called as such:
+// Trie trie = new Trie();
+// trie.insert("somestring");
+// trie.search("key");
